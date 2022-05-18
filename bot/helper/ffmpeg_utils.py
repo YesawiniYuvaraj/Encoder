@@ -20,8 +20,6 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
 
-ffmpe = str(ffmpeg[0])
-
 async def run_subprocess(cmd):
     process = await asyncio.create_subprocess_shell(
         cmd,
@@ -33,6 +31,7 @@ async def run_subprocess(cmd):
 async def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
+    ffmpeg_code = str(ffmpeg[0])
     nam = filepath.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ")
     nam = nam.replace("_", " ")
     nam = nam.replace(".mkv", " ")
@@ -52,13 +51,11 @@ async def encode(filepath):
     og = joined_string + " [@ANIXPO]" + ".mkv"
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     try:
-        ffmpeg = f'ffmpeg -i "{filepath}" {ffmpe} -y "{og}"'
-        LOGGER.info(ffmpeg)
+        ffmpeg = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
         process = await run_subprocess(ffmpeg)
-        LOGGER.info(process)
         return og
     except Exception as er:
-        return er
+        return LOG.info(f"Error {er}")
 
 async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
