@@ -16,7 +16,7 @@ async def add_task(message: Message):
       filepath = await message.download(file_name=download_dir)
       chatid = message.chat.id
       reply_id = message.id
-      og = await encode(filepath, reply_id, chatid)
+      og = await encode(filepath, chatid, reply_id)
       if og:
         await msg.edit("**⬆️ Starting To Upload**")
         thumb = await get_thumbnail(og)
