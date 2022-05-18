@@ -33,8 +33,8 @@ async def stats(e):
         ans = f"Processing Media:\n{processing_file_name}\n\nDownloaded:\n{ov}\n\nCompressed:\n{ot}"
         await callback_query.answer(ans, cache_time=0, show_alert=True)
     except Exception as er:
-        LOGS.info(er)
-        await e.answer(
+        LOGGER.info(er)
+        await callback_query.answer(
             "Someting Went Wrong.\nSend Media Again.", cache_time=0, alert=True
         )
 
