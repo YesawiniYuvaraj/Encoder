@@ -29,14 +29,12 @@ async def stats(e):
         out, dl, id = wh.split(";")
         ot = hbs(int(Path(og).stat().st_size))
         ov = hbs(int(Path(filepath).stat().st_size))
-        processing_file_name = dl.replace(f"downloads/", "").replace(f"_", " ")
+        processing_file_name = filepath.replace(f"/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", "").replace(f"_", " ")
         ans = f"Processing Media:\n{processing_file_name}\n\nDownloaded:\n{ov}\n\nCompressed:\n{ot}"
         await callback_query.answer(ans, cache_time=0, show_alert=True)
     except Exception as er:
         LOGGER.info(er)
-        await callback_query.answer(
-            "Someting Went Wrong.\nSend Media Again.", cache_time=0, alert=True
-        )
+        await callback_query.answer("Someting Went Wrong.\nSend Media Again.", cache_time=0, alert=True)
 
 async def run_subprocess(cmd):
     process = await asyncio.create_subprocess_shell(
