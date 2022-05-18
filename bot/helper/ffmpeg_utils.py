@@ -51,8 +51,8 @@ async def encode(filepath):
     og = joined_string + " [@ANIXPO]" + ".mkv"
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     try:
-        ffmpeg = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
-        process = await run_subprocess(ffmpeg)
+        ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
+        process = await run_subprocess(ffmpeg_cmd)
         return og
     except Exception as er:
         return LOG.info(f"Error {er}")
