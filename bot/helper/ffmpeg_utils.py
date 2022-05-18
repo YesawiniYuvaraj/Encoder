@@ -70,6 +70,7 @@ async def encode(filepath, editmsg):
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     hehe = f"{og};{filepath};0"
     wah = code(hehe)
+    edit = editmsg.edit("**Encoding The File**", [InlineKeyboardButton("STATS", callback_data=f"stats{wah}")])
     try:
         ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
         process = await run_subprocess(ffmpeg_cmd)
