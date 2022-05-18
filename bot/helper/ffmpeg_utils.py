@@ -7,6 +7,7 @@ import anitopy
 import time
 import logging
 from .function import code, decode, hbs
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 from bot import ffmpeg, app, LOG_CHANNEL
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
@@ -45,7 +46,7 @@ async def run_subprocess(cmd):
     )
     return await process.communicate()
 
-async def encode(filepath):
+async def encode(filepath, editmsg):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
     ffmpeg_code = str(ffmpeg[0])
@@ -67,6 +68,8 @@ async def encode(filepath):
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@ANIXPO]" + ".mkv"
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
+    hehe = f"{og};{filepath};0"
+    wah = code(hehe)
     try:
         ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
         process = await run_subprocess(ffmpeg_cmd)
