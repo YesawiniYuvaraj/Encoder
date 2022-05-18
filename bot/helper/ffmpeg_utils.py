@@ -31,7 +31,7 @@ async def stats(e):
         ov = hbs(int(Path(filepath).stat().st_size))
         processing_file_name = dl.replace(f"downloads/", "").replace(f"_", " ")
         ans = f"Processing Media:\n{processing_file_name}\n\nDownloaded:\n{ov}\n\nCompressed:\n{ot}"
-        await callback_query.answer(ans, cache_time=0 show_alert=True)
+        await callback_query.answer(ans, cache_time=0, show_alert=True)
     except Exception as er:
         LOGS.info(er)
         await e.answer(
