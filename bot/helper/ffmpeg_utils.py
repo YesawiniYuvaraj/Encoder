@@ -22,16 +22,16 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
 
-async def stats(e):
+async def stats(wah, update: CallbackQuery):
     try:
-        wah = e.pattern_match.group(1).decode("utf-8")
+        wah = update.pattern_match.group(1).decode("utf-8")
         wh = decode(wah)
         out, dl, id = wh.split(";")
         ot = hbs(int(Path(out).stat().st_size))
         ov = hbs(int(Path(dl).stat().st_size))
         processing_file_name = filepath.replace(f"/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", "").replace(f"_", " ")
         ans = f"Processing Media:\n{processing_file_name}\n\nDownloaded:\n{ov}\n\nCompressed:\n{ot}"
-        await callback_query.answer(ans, cache_time=0, show_alert=True)
+        await update.answer(ans, cache_time=0, show_alert=True)
     except Exception as er:
         LOGGER.info(er)
         await e.answer("Someting Went Wrong.\nSend Media Again.", cache_time=0, alert=True)
