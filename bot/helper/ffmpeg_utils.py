@@ -6,7 +6,7 @@ import json
 import anitopy
 import time
 import logging
-from bot.function import code, decode, hbs
+from .function import code, decode, hbs
 from bot import ffmpeg, app, LOG_CHANNEL
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
