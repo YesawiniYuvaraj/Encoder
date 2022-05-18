@@ -21,6 +21,22 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
 
+async def stats(e):
+    try:
+        wah = e.pattern_match.group(1).decode("UTF-8")
+        wh = decode(wah)
+        out, dl, id = wh.split(";")
+        ot = hbs(int(Path(og).stat().st_size))
+        ov = hbs(int(Path(filepath).stat().st_size))
+        processing_file_name = dl.replace(f"downloads/", "").replace(f"_", " ")
+        ans = f"Processing Media:\n{processing_file_name}\n\nDownloaded:\n{ov}\n\nCompressed:\n{ot}"
+        await e.answer(ans, cache_time=0, alert=True)
+    except Exception as er:
+        LOGS.info(er)
+        await e.answer(
+            "Someting Went Wrong.\nSend Media Again.", cache_time=0, alert=True
+        )
+
 async def run_subprocess(cmd):
     process = await asyncio.create_subprocess_shell(
         cmd,
