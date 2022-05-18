@@ -46,7 +46,7 @@ async def run_subprocess(cmd):
     )
     return await process.communicate()
 
-async def encode(filepath, editmsg):
+async def encode(filepath, editmsg, mes):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
     ffmpeg_code = str(ffmpeg[0])
@@ -70,7 +70,16 @@ async def encode(filepath, editmsg):
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     hehe = f"{og};{filepath};0"
     wah = code(hehe)
-    edit = editmsg.edit(f"**Encoding The File {og}**", [InlineKeyboardButton("STATS", callback_data=f"stats{wah}")])
+    edit = await app.send_message(
+        chat_id=editmsg,
+        reply_to_message_id=mes,
+        text= "Encoding In Progress",
+        reply_markup=InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("STATS", callback_data=f"stats{wah}")],
+        ])
+    )
+        
     try:
         ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
         process = await run_subprocess(ffmpeg_cmd)
