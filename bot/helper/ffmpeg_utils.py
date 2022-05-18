@@ -24,7 +24,7 @@ LOGGER = logging.getLogger(__name__)
 
 async def stats(e):
     try:
-        wah = e.pattern_match.group(1).decode("UTF-8")
+        wah = e.pattern_match.group(1).decode("utf-8")
         wh = decode(wah)
         out, dl, id = wh.split(";")
         ot = hbs(int(Path(out).stat().st_size))
@@ -74,7 +74,7 @@ async def encode(filepath, editmsg, mes):
         text= "Encoding In Progress",
         reply_markup=InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("STATS", callback_data=f"stats")],
+            [InlineKeyboardButton("STATS", callback_data=f"stats{wah}")],
         ])
     )
         
