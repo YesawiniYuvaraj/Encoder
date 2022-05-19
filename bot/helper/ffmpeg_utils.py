@@ -65,7 +65,7 @@ async def encode(filepath, editmsg, mes):
         text= "Encoding In Progress",
         reply_markup=InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("STATS", callback_data="stats{wah}" )],
+            [InlineKeyboardButton("STATS", callback_data="stats" )],
         ])
     )
         
