@@ -38,7 +38,7 @@ async def stats(_, event):
     file = data_s.replace("stats", "")
     outsize = os.path.getsize(file)
     out_sizeinmb = outsize / 1024 / 1024
-    ans = f"File: {file}\n Encoded File Size:\n{out_sizeinmb}}"
+    ans = f"File: {file}\n Encoded File Size:\n{out_sizeinmb}"
     await event.answer(ans, show_alert=True)
 
 async def encode(filepath, editmsg, mes):
