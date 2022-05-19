@@ -34,7 +34,6 @@ async def run_subprocess(cmd):
 async def stats(_, event):
     try:
      data_s = event.data
-     LOGGER.info(data_s)
      file = data_s.replace("stats", "")
      outsize = os.path.getsize(file)
      out_sizeinmb = outsize / 1024 / 1024
