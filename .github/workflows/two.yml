@@ -1,4 +1,4 @@
-name: second
+name: two
 
 on:
   workflow_dispatch:
