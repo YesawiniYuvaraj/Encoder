@@ -32,8 +32,17 @@ async def run_subprocess(cmd):
     return await process.communicate()
 
 @app.on_callback_query()
-async def function_name(_, event):
-    await event.answer("Mradul kumar", show_alert=True)
+async def stats(_, event):
+    wah = event.pattern_match.group(1).decode("UTF-8")
+    wh = decode(wah)
+    out, dl, id = wh.split(";")
+    file = dl.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ") 
+    outsize = os.path.getsize(out)
+    dl_size = os.path.getsize(dl)
+    dl_size_mb = dl_size / 1024 / 1024 
+    out_sizeinmb = outsize / 1024 / 1024
+    ans = f"File: {file}\n Encoded File Size: {out_sizeinmb}\n Original File Size: {dl_size_mb}"
+    await event.answer(ans, show_alert=True)
 
 async def encode(filepath, editmsg, mes):
     basefilepath, extension = os.path.splitext(filepath)
@@ -65,7 +74,7 @@ async def encode(filepath, editmsg, mes):
         text= "Encoding In Progress",
         reply_markup=InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("STATS", callback_data="stats" )],
+            [InlineKeyboardButton("STATS", callback_data=f"stats{wah}" )],
         ])
     )
         
