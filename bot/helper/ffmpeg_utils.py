@@ -1,4 +1,5 @@
 import asyncio
+import pyrogram
 from pyrogram import filters
 import os
 import sys
