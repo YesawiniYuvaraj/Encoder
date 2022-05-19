@@ -33,9 +33,7 @@ async def run_subprocess(cmd):
 
 @app.on_callback_query()
 async def stats(_, event):
-    wah = event.pattern_match.group(1).decode("UTF-8")
-    wh = decode(wah)
-    out, dl, id = wh.split(";")
+    out, dl, id = wah.split(";")
     file = dl.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ") 
     outsize = os.path.getsize(out)
     dl_size = os.path.getsize(dl)
