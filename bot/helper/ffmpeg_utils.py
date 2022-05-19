@@ -30,6 +30,10 @@ async def run_subprocess(cmd):
     )
     return await process.communicate()
 
+@app.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("stats")))
+  async def stats(wah, query):
+        query.answer("Hello", show_alert=True)
+
 async def encode(filepath, editmsg, mes):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
@@ -60,7 +64,7 @@ async def encode(filepath, editmsg, mes):
         text= "Encoding In Progress",
         reply_markup=InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("STATS", callback_data="" )],
+            [InlineKeyboardButton("STATS", callback_data="stats{wah}" )],
         ])
     )
         
