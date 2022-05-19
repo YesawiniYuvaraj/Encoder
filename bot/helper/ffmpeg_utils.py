@@ -124,10 +124,7 @@ async def sample_gen(app, message):
      output = await run_subprocess(file_gen_cmd)   
      LOGGER.info(output)
      duration = await get_duration(output_file)
-     output_thumb = 'home/runner/work/Encoder/Encoder/thumb_new.jpg'
-     thumb_cmd = f'ffmpeg -i {output_file} -map 0:v -ss 00:20 -frames:v 1 "{output_thumb} -y"'
-     output = await run_subprocess(thumb_cmd)
-     LOGGER.info(output)   
+     thumbnail = await get_thumbnail(video)
   else:
      await message.reply_text('NO FILE DETECTED')
   if os.path.exists(output_file):
@@ -142,13 +139,13 @@ async def sample_gen(app, message):
         width=1280,
         height=720,
         file_name=output_file,
-        thumb=output_thumb,
+        thumb=thumbnail,
         reply_to_message_id=vid
      )
      await dp.delete()
      os.remove(video)
      os.remove(output_file)
-     os.remove(output_thumb)
+     os.remove(thumbnail)
   else:
      await dp.edit("Failed To Generate Sample Due To Locked Infrastructure")
      os.remove(video_file)    
