@@ -25,7 +25,6 @@ video_mimetype = [
   "video/mpeg"
   ]
 
-REXT = "Hi {message.from_user.mention()}\n**•I can Encode Telegram files And Send Sample (Especially Movies,Animes), just send me a video.**\n**•This Bot is Developed by @NIRUSAKI_AYEDAEMON**\n**•Simple, Easy and Convenient to use**\n**Thanks**"
 
 @app.on_message(filters.incoming & filters.command(["cmds", "cmd", "commands"]))
 async def help_message(app, message):
@@ -37,6 +36,7 @@ async def help_message(app, message):
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
       return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")
+    REXT = f"Hi {message.from_user.mention()}\n**•I can Encode Telegram files And Send Sample (Especially Movies,Animes), just send me a video.**\n**•This Bot is Developed by @NIRUSAKI_AYEDAEMON**\n**•Simple, Easy and Convenient to use**\n**Thanks**"
     await app.send_message(
         chat_id=message.chat.id,
         text=REXT,
