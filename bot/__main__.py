@@ -1,6 +1,6 @@
 from pyrogram import filters
 from bot import app, data, sudo_users, LOG_CHANNEL
-from bot.helper.function import change_ffmpeg, get_ffmpeg, movie_mode
+from bot.helper.function import change_ffmpeg, get_ffmpeg, movie_mode, anime_mode
 from bot.helper.utils import add_task
 from bot.helper.devtools import exec_message_f , eval_message_f
 from bot.helper.ffmpeg_utils import startup, LOGGER, sample_gen
@@ -82,11 +82,17 @@ async def help_message(app, message):
       return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
     await get_ffmpeg(app, message)
 
-@app.on_message(filters.incoming & filters.command(["getcode"]))
+@app.on_message(filters.incoming & filters.command(["Movie"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
       return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
-    await movie_mode(app, message)    
+    await movie_mode(app, message)  
+
+@app.on_message(filters.incoming & filters.command(["Anime"]))
+async def help_message(app, message):
+    if message.chat.id not in sudo_users:
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
+    await anime_mode(app, message)      
     
     
 ##Run App
