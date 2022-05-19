@@ -7,7 +7,6 @@ import json
 import anitopy
 import time
 import logging
-from .function import code, decode, hbs
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 from bot import ffmpeg, app, LOG_CHANNEL
 from subprocess import call, check_output
