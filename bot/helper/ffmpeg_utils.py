@@ -125,8 +125,9 @@ async def sample_gen(app, message):
      LOGGER.info(output)
      duration = await get_duration(output_file)
      output_thumb = 'home/runner/work/Encoder/Encoder/thumb_new.jpg'
-     thumb_cmd = f'ffmpeg -i {output_file} -map 0:v -ss 00:15 -frames:v 1 -y "{output_thumb}"'
+     thumb_cmd = f'ffmpeg -i {output_file} -map 0:v -ss 00:20 -frames:v 1 "{output_thumb} -y"'
      output = await run_subprocess(thumb_cmd)
+     LOGGER.info(output)   
   else:
      await message.reply_text('NO FILE DETECTED')
   if os.path.exists(output_file):
