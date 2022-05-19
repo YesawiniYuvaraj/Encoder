@@ -7,6 +7,7 @@ from bot.helper.ffmpeg_utils import startup, LOGGER, sample_gen
 import asyncio
 import traceback
 import time
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 
 video_mimetype = [
   "video/x-flv",
