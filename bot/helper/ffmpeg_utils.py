@@ -33,14 +33,18 @@ async def run_subprocess(cmd):
 
 @app.on_callback_query()
 async def stats(_, event):
-    data_s = event.data
-    LOGGER.info(data_s)
-    file = data_s.replace("stats", "")
-    outsize = os.path.getsize(file)
-    out_sizeinmb = outsize / 1024 / 1024
-    out = round(out_sizeinmb, 2)
-    ans = f"File:\n{file}\nEncoded File Size:\n{out}"
-    await event.answer(ans, show_alert=True)
+    try:
+     data_s = event.data
+     LOGGER.info(data_s)
+     file = data_s.replace("stats", "")
+     outsize = os.path.getsize(file)
+     out_sizeinmb = outsize / 1024 / 1024
+     out = round(out_sizeinmb, 2)
+     ans = f"File:\n{file}\nEncoded File Size:\n{out} MB"
+     await event.answer(ans, show_alert=True)
+    except Exception as er:
+        await event.answer("Someting Went Wrong 🤔\nResend Media", cache_time=0, alert=True)    
+        
 
 async def encode(filepath, editmsg, mes):
     basefilepath, extension = os.path.splitext(filepath)
