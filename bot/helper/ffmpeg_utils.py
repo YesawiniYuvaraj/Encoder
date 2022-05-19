@@ -33,6 +33,7 @@ async def run_subprocess(cmd):
 
 @app.on_callback_query()
 async def stats(_, event):
+    LOGGER.info(event)
     out, dl, id = wah.split(";")
     file = dl.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ") 
     outsize = os.path.getsize(out)
