@@ -33,14 +33,12 @@ async def run_subprocess(cmd):
 
 @app.on_callback_query()
 async def stats(_, event):
-    LOGGER.info(event)
-    out, dl, id = wah.split(";")
-    file = dl.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ") 
-    outsize = os.path.getsize(out)
-    dl_size = os.path.getsize(dl)
-    dl_size_mb = dl_size / 1024 / 1024 
+    data_s = event.data
+    LOGGER.info(data_s)
+    file = data_s.replace("stats", "")
+    outsize = os.path.getsize(file)
     out_sizeinmb = outsize / 1024 / 1024
-    ans = f"File: {file}\n Encoded File Size: {out_sizeinmb}\n Original File Size: {dl_size_mb}"
+    ans = f"File: {file}\n Encoded File Size:\n{out_sizeinmb}}"
     await event.answer(ans, show_alert=True)
 
 async def encode(filepath, editmsg, mes):
@@ -65,15 +63,13 @@ async def encode(filepath, editmsg, mes):
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@ANIXPO]" + ".mkv"
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
-    hehe = f"{og};{filepath};0"
-    wah = code(hehe)
     edit = await app.send_message(
         chat_id=editmsg,
         reply_to_message_id=mes,
         text= "Encoding In Progress",
         reply_markup=InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("STATS", callback_data=f"stats{wah}" )],
+            [InlineKeyboardButton("STATS", callback_data=f"stats{og}" )],
         ])
     )
         
