@@ -31,9 +31,9 @@ async def run_subprocess(cmd):
     )
     return await process.communicate()
 
-@app.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("stats")))
-async def stats(query: CallbackQuery):
-    query.answer("Hello", show_alert=True)
+@app.on_callback_query()
+async def function_name(_, event):
+    await event.answer("Mradul kumar", show_alert=True)
 
 async def encode(filepath, editmsg, mes):
     basefilepath, extension = os.path.splitext(filepath)
