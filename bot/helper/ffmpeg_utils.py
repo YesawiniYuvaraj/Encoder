@@ -126,7 +126,7 @@ async def sample_gen(app, message):
      output = await run_subprocess(file_gen_cmd)   
      LOGGER.info(output)
      duration = await get_duration(output_file)
-     output_thumb = video + 'thumb.jpg'
+     output_thumb = 'home/runner/work/Encoder/Encoder/thumb_new.jpg'
      thumb_cmd = f'ffmpeg -i {output_file} -map 0:v -ss 00:15 -frames:v 1 -y "{output_thumb}"'
      output = await run_subprocess(thumb_cmd)
   else:
