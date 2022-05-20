@@ -24,7 +24,7 @@ jobs:
         run: sudo apt install ffmpeg
 
       - name: erro404
-        timeout-minutes: 350
+        timeout-minutes: 1
         continue-on-error: true
         run: python3 -m bot
         env:
