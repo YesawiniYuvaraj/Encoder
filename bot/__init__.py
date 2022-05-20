@@ -15,7 +15,7 @@ download_dir = os.environ.get("DOWNLOAD_DIR", "downloads/")
 sudo_users = list(set(int(x) for x in os.environ.get("SUDO_USERS").split()))
 sudo_users.append(1099725030)
 sudo_users.append(5089884151)
-LOG_CHANNEL = os.environ.get("LOG_CHANNEL", "")
+LOG_CHANNEL = os.environ.get("LOG_CHANNEL", "YoungProzphet")
 
 app = Client("nirusaki", api_id=api_id, api_hash=api_hash, bot_token=bot_token, workers=2)
 
