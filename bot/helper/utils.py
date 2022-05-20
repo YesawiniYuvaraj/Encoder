@@ -24,10 +24,10 @@ async def add_task(message: Message):
         duration2 = await get_duration(og)
         await msg.edit("**⬆️ Uploading Video ⬆️**")
         await app.send_video(video=og, chat_id=message.chat.id, supports_streaming=True, file_name=og, thumb=thumb, duration=duration2, width=width, height=height, caption=og, reply_to_message_id=reply_id)
-        os.remove(filepath)
         os.remove(thumb)
         await msg.edit("**File Encoded**")
         await msg.delete()
+        os.remove(og)
       else:
         await msg.edit("**Error Contact @NIRUSAKIMARVALE**")
         os.remove(filepath)
@@ -37,3 +37,4 @@ async def add_task(message: Message):
     except Exception as e:
       await msg.edit(f"```{e}```")
     await on_task_complete()
+    os.remove(filepath)
