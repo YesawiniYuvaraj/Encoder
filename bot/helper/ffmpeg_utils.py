@@ -79,7 +79,7 @@ async def encode(filepath, editmsg, mes):
         ])
      )
     except Exception as e:
-     edit = await app.send_message(chat_id=editmsg, reply_to_message=mes, text="Encoding In Progress")   
+     edit = await app.send_message(chat_id=editmsg, reply_to_message_id=mes, text="Encoding In Progress")   
     try:
         ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
         process = await run_subprocess(ffmpeg_cmd)
