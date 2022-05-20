@@ -1,4 +1,7 @@
 pyrogram
+aiohttp
+python-decouple
+psutil
 TgCrypto
 python-dotenv
 hachoir
