@@ -38,6 +38,6 @@ jobs:
 
       - name: Run dispatch_event.
         run: |
-          python main.py
+          python3 main.py
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }} 
