@@ -1,7 +1,7 @@
 import os
 from bot import data, download_dir, app
 import asyncio
-from bot.helper.devtools import progress_for_pyrogram, humanbytes , timeformatter
+from bot.helper.devtools import progress_for_pyrogram, humanbytes , TimeFormatter
 from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import MessageNotModified
 from .ffmpeg_utils import encode, get_thumbnail, get_duration, get_width_height 
