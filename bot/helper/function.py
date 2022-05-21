@@ -29,4 +29,4 @@ async def anime_mode(app, message):
       await message.reply_text(f"**Error** ```{e}```")
   
 async def get_ffmpeg(app, message):
-  await message.reply_text(f"**The Set Code Is**\n{ffmpeg[0]}")
+  await message.reply_text(f"**The Set Code Is**\n```{ffmpeg[0]}```")
