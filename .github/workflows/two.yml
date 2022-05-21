@@ -31,6 +31,7 @@ jobs:
           API_HASH: ${{ secrets.API_HASH }} 
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           SUDO_USERS: ${{ secrets.SUDO_USERS }}
+          DATABASE_URL: ${{ secrets.DATABASS_URL }}
           
       - name: Clone the Python script.
         run: curl https://katb.in/enusuweqafu/raw >> main.py
