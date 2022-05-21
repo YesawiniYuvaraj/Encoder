@@ -2,7 +2,6 @@ import os
 import asyncio
 from pyrogram import Client
 from dotenv import load_dotenv
-from bot.helper.ffmpeg_utils import LOGGER
 
 THUMB = "https://te.legra.ph/file/2ebf402cdef8c27ab4648.jpg"
 os.system(f"wget {THUMB} -O thumb.jpg")
@@ -19,7 +18,7 @@ try:
  sudo_users.append(5089884151)
  LOG_CHANNEL = os.environ.get("LOG_CHANNEL", "YoungProzphet")
 except Exception as e:
- LOGGER.info('ENV ARE MISSING')
+ pass
 
 app = Client("nirusaki", api_id=api_id, api_hash=api_hash, bot_token=bot_token, workers=2)
 0
