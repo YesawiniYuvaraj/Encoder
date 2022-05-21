@@ -51,7 +51,6 @@ async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, 
   if filetype == True:
     u_start = time.time()
     await app.send_video(
-
       video=og,
       chat_id=message.chat.id, 
       supports_streaming=True,
@@ -64,28 +63,26 @@ async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, 
       reply_to_message_id=reply_id,
       progress=progress_for_pyrogram,
       progress_args=(
-        .
         app,
         "**⬆️ Trying To Upload ⬆️**",
         msg,
         u_start
-        )
-     
+      )
+  )
  else:
-  await app.send_document(
-               document=og,
-               chat_id=message.chat.id, 
-               supports_streaming=True,
-               file_name=og, 
-               thumb=thumb,  
-               caption=og, 
-               reply_to_message_id=reply_id,
-               progress=progress_for_pyrogram,
-               progress_args=(
-                 app,
-                 "**⬆️ Trying To Upload ⬆️**",
-                 msg,
-                 u_start
+   await app.send_document(
+     document=og,
+     chat_id=message.chat.id, 
+     supports_streaming=True,
+     file_name=og, 
+     thumb=thumb,  
+     caption=og, 
+     reply_to_message_id=reply_id,
+     progress=progress_for_pyrogram,
+     progress_args=(
+       app,
+       "**⬆️ Trying To Upload ⬆️**",
+       msg,
+       u_start
         )
       )
-   
