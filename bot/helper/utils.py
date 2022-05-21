@@ -16,7 +16,7 @@ async def add_task(message: Message):
     try: 
       d_start = time.time() 
       msg = await message.reply_text("⬇️ **Downloading Video** ⬇️", quote=True)
-      filepath = await bot.download_media(
+      filepath = await app.download_media(
         message=message,  
         file_name=download_dir,
         progress=progress_for_pyrogram,
