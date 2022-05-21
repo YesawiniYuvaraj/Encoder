@@ -3,7 +3,7 @@ aiohttp
 python-decouple
 psutil
 TgCrypto
-mototr
+motor
 python-dotenv
 hachoir
 anitopy
