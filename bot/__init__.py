@@ -1,13 +1,11 @@
 import os
 import logging
 import asyncio
+from logging.handlers import RotatingFileHandler
 from pyrogram import Client
 from dotenv import load_dotenv
 
-
 LOG_FILE_NAME = "Encoder@Log.txt"
-
-
 
 if os.path.exists(LOG_FILE_NAME):
     with open(LOG_FILE_NAME, "r+") as f_d:
@@ -27,7 +25,7 @@ logging.basicConfig(
     ]
 )
 logging.getLogger("pyrogram").setLevel(logging.INFO)
-logging.getLogger("ffmpeg").setLevel(logging.INFO)
+logging.getLogger("urllib3").setLevel(logging.INFO)
 LOGS = logging.getLogger(__name__)
 
 
