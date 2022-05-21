@@ -47,7 +47,8 @@ async def upload_mode(app, message):
    await message.reply_text("Undefined Video Mode Ise ```document``` Or ```video```")
 
 async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, height, duration2):
- if filetype == True:
+
+  if filetype == True:
     u_start = time.time()
     await app.send_video(
                video=og,
