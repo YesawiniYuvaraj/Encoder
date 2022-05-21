@@ -49,22 +49,21 @@ async def upload_mode(app, message):
 async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, height, duration2):
 
   if filetype == True:
-    a
     u_start = time.time()
     await app.send_video(
       d
-               video=og,
-               chat_id=message.chat.id, 
-               supports_streaming=True,
-               file_name=og, 
-               thumb=thumb, 
-               duration=duration2, 
-               width=width, 
-               height=height, 
-               caption=og, 
-               reply_to_message_id=reply_id,
-               progress=progress_for_pyrogram,
-               progress_args=(
+      video=og,
+      chat_id=message.chat.id, 
+      supports_streaming=True,
+      file_name=og, 
+      thumb=thumb, 
+      duration=duration2, 
+      width=width, 
+      height=height, 
+      caption=og, 
+      reply_to_message_id=reply_id,
+      progress=progress_for_pyrogram,
+      progress_args=(
                  app,
                  "**⬆️ Trying To Upload ⬆️**",
                  msg,
