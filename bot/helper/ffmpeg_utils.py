@@ -46,7 +46,7 @@ async def stats(_, event):
         await event.answer("Someting Went Wrong 🤔\nResend Media", show_alert=True)    
         
 
-async def encode(filepath, editmsg, mes):
+async def encode(filepath, msg):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
     ffmpeg_code = str(ffmpeg[0])
@@ -69,19 +69,15 @@ async def encode(filepath, editmsg, mes):
     og = joined_string + " [@ANIXPO]" + ".mkv"
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     try:
-     edit = await app.send_message(
-          chat_id=editmsg,
-          reply_to_message_id=mes,
-          text= "Encoding In Progress", 
-          reply_markup=InlineKeyboardMarkup(
-          [
-            [InlineKeyboardButton("STATS", callback_data=f"stats{og}" )],
-        ])
+     await msg.edit(
+        text= "Encoding In Progress", 
+        reply_markup=InlineKeyboardMarkup(
+        [
+          [InlineKeyboardButton("STATS", callback_data=f"stats{og}" )],
+       ])
      )
     except Exception as e:
-     edit = await app.send_message(
-          chat_id=editmsg,
-          reply_to_message_id=mes,
+     edit = await msg.edit(
           text= "Encoding In Progress"
       )
     try:
