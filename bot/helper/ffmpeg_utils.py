@@ -83,6 +83,7 @@ async def encode(filepath, editmsg, mes):
     try:
         ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
         process = await run_subprocess(ffmpeg_cmd)
+        LOGGER.info(process)
         await edit.delete()
         return og
     except Exception as er:
