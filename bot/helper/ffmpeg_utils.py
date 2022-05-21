@@ -67,7 +67,7 @@ async def encode(filepath, editmsg, mes):
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@ANIXPO]" + ".mkv"
-    og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", ""
+    og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     dit = await app.send_message(
           chat_id=editmsg,
           reply_to_message_id=mes,
