@@ -5,6 +5,7 @@ import asyncio
 from bot.helper.devtools import progress_for_pyrogram, humanbytes , TimeFormatter
 from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import MessageNotModified
+from .function import upload_handle
 from .ffmpeg_utils import encode, get_thumbnail, get_duration, get_width_height 
 
 async def on_task_complete():
@@ -37,25 +38,7 @@ async def add_task(message: Message):
         duration2 = await get_duration(og)
         await msg.edit("**⬆️ Uploading Video ⬆️**")
         u_start = time.time()
-        await app.send_video(
-               video=og,
-               chat_id=message.chat.id, 
-               supports_streaming=True,
-               file_name=og, 
-               thumb=thumb, 
-               duration=duration2, 
-               width=width, 
-               height=height, 
-               caption=og, 
-               reply_to_message_id=reply_id,
-               progress=progress_for_pyrogram,
-               progress_args=(
-                 app,
-                 "**⬆️ Trying To Upload ⬆️**",
-                 msg,
-                 u_start
-          )
-        )
+        await upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, height, duration2)
         await msg.delete()
         os.remove(thumb)
         os.remove(og)
