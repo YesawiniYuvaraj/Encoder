@@ -91,7 +91,7 @@ async def encode(filepath, editmsg, mes):
         await dit.delete()
         return og
     except Exception as er:
-        return LOG.info(f"Error {er}")
+        return LOGGER.info(f"Error {er}")
 
 async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
