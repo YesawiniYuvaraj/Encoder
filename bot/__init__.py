@@ -2,7 +2,7 @@ import os
 import asyncio
 from pyrogram import Client
 from dotenv import load_dotenv
-from bot.helpers.ffmpeg_utils import LOGGER
+from bot.helper.ffmpeg_utils import LOGGER
 
 THUMB = "https://te.legra.ph/file/2ebf402cdef8c27ab4648.jpg"
 os.system(f"wget {THUMB} -O thumb.jpg")
