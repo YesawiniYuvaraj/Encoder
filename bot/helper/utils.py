@@ -29,20 +29,38 @@ async def add_task(message: Message):
       )
       chatid = message.chat.id
       reply_id = message.id
-      og = await encode(filepath, chatid, reply_id, msg)
+      og = await encode(filepath, msg)
       if og:
         await msg.edit("**⬆️ Starting To Upload**")
         thumb = await get_thumbnail(og)
         width, height = await get_width_height(filepath)
         duration2 = await get_duration(og)
         await msg.edit("**⬆️ Uploading Video ⬆️**")
-        await app.send_video(video=og, chat_id=message.chat.id, supports_streaming=True, file_name=og, thumb=thumb, duration=duration2, width=width, height=height, caption=og, reply_to_message_id=reply_id)
+        u_start = time.time()
+        await app.send_video(
+               video=og,
+               chat_id=message.chat.id, 
+               supports_streaming=True,
+               file_name=og, 
+               thumb=thumb, 
+               duration=duration2, 
+               width=width, 
+               height=height, 
+               caption=og, 
+               reply_to_message_id=reply_id,
+               progress=progress_for_pyrogram,
+               progress_args=(
+                 app,
+                 "**⬆️ Trying To Upload ⬆️**",
+                 msg,
+                 u_start
+          )
+        )
         await msg.delete()
         os.remove(thumb)
         os.remove(og)
       else:
         await msg.edit("**Error Contact @NIRUSAKIMARVALE**")
-        os.remove(filepath)
         os.remove(og)
     except MessageNotModified:
       pass
