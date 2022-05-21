@@ -27,7 +27,7 @@ async def add_task(message: Message):
           d_start
         )
       )
-      msg.delete()
+      await msg.delete()
       chatid = message.chat.id
       reply_id = message.id
       og = await encode(filepath, chatid, reply_id)
@@ -38,6 +38,7 @@ async def add_task(message: Message):
         duration2 = await get_duration(og)
         await mesa.edit("**⬆️ Uploading Video ⬆️**")
         await app.send_video(video=og, chat_id=message.chat.id, supports_streaming=True, file_name=og, thumb=thumb, duration=duration2, width=width, height=height, caption=og, reply_to_message_id=reply_id)
+        await mesa.delete()
         os.remove(thumb)
         os.remove(og)
       else:
