@@ -72,7 +72,7 @@ async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, 
    await app.send_document(
      document=og,
      chat_id=message.chat.id, 
-     supports_streaming=True,
+     force_document=True,
      file_name=og, 
      thumb=thumb,  
      caption=og, 
