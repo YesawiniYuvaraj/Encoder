@@ -68,15 +68,22 @@ async def encode(filepath, editmsg, mes):
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@ANIXPO]" + ".mkv"
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
-    dit = await app.send_message(
+    try:
+     dit = await app.send_message(
           chat_id=editmsg,
           reply_to_message_id=mes,
           text= "Encoding In Progress", 
           reply_markup=InlineKeyboardMarkup(
           [
             [InlineKeyboardButton("STATS", callback_data=f"stats{og}" )],
-       ])
-    ) 
+        ])
+     )
+    except Exception as e:
+      await app.send_message(
+          chat_id=editmsg,
+          reply_to_message_id=mes,
+          text= "Encoding In Progress"
+      )
     try:
         ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
         process = await run_subprocess(ffmpeg_cmd)
