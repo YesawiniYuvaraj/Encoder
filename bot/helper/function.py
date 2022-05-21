@@ -1,8 +1,12 @@
 import pyrogram
 import asyncio
+from bot.helper.devtools import progress_for_pyrogram
 import time
 import subprocess
 from bot import app, sudo_users, ffmpeg
+
+
+filetype = True
 
 async def change_ffmpeg(app, message):
   try:
@@ -30,3 +34,45 @@ async def anime_mode(app, message):
   
 async def get_ffmpeg(app, message):
   await message.reply_text(f"**The Set Code Is**\n```{ffmpeg[0]}```")
+
+
+async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, height, duration2):
+   if filetype == True:
+    u_start = time.time()
+    await app.send_video(
+               video=og,
+               chat_id=message.chat.id, 
+               supports_streaming=True,
+               file_name=og, 
+               thumb=thumb, 
+               duration=duration2, 
+               width=width, 
+               height=height, 
+               caption=og, 
+               reply_to_message_id=reply_id,
+               progress=progress_for_pyrogram,
+               progress_args=(
+                 app,
+                 "**⬆️ Trying To Upload ⬆️**",
+                 msg,
+                 u_start
+        )
+      )
+   else:
+    await app.send_document(
+               document=og,
+               chat_id=message.chat.id, 
+               supports_streaming=True,
+               file_name=og, 
+               thumb=thumb,  
+               caption=og, 
+               reply_to_message_id=reply_id,
+               progress=progress_for_pyrogram,
+               progress_args=(
+                 app,
+                 "**⬆️ Trying To Upload ⬆️**",
+                 msg,
+                 u_start
+        )
+      )
+   
