@@ -9,7 +9,8 @@ import io
 import asyncio
 import time
 from bot import app, MAX_MESSAGE_LENGTH, sudo_users, ffmpeg, data
-
+FINISHED_PROGRESS_STR = "■"
+UN_FINISHED_PROGRESS_STR = "□"
 
 async def exec_message_f(client, message):
   if message.from_user.id in sudo_users:
