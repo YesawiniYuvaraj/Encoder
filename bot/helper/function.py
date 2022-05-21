@@ -47,7 +47,7 @@ async def upload_mode(app, message):
    await message.reply_text("Undefined Video Mode Ise ```document``` Or ```video```")
 
 async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, height, duration2):
-   if filetype == True:
+ if filetype == True:
     u_start = time.time()
     await app.send_video(
                video=og,
@@ -68,8 +68,8 @@ async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, 
                  u_start
         )
       )
-   else:
-    await app.send_document(
+ else:
+  await app.send_document(
                document=og,
                chat_id=message.chat.id, 
                supports_streaming=True,
