@@ -49,8 +49,10 @@ async def upload_mode(app, message):
 async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, height, duration2):
 
   if filetype == True:
+    a
     u_start = time.time()
     await app.send_video(
+      d
                video=og,
                chat_id=message.chat.id, 
                supports_streaming=True,
