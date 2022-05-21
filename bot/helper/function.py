@@ -84,5 +84,5 @@ async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, 
        "**⬆️ Trying To Upload ⬆️**",
        msg,
        u_start
-        )
-      )
+     )
+  )
