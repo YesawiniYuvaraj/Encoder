@@ -43,7 +43,7 @@ async def stats(_, event):
      ans = f"File:\n{file}\nEncoded File Size:\n{out} MB"
      await event.answer(ans, show_alert=True)
     except Exception as er:
-        await event.answer("Someting Went Wrong 🤔\nResend Media", cache_time=0, show_alert=True)    
+        await event.answer("Someting Went Wrong 🤔\nResend Media", show_alert=True)    
         
 
 async def encode(filepath, editmsg, mes):
@@ -67,9 +67,8 @@ async def encode(filepath, editmsg, mes):
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@ANIXPO]" + ".mkv"
-    og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
-    try:
-     edit = await app.send_message(
+    og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", ""
+    edit = await app.send_message(
         chat_id=editmsg,
         reply_to_message_id=mes,
         text= "Encoding In Progress",
@@ -77,9 +76,7 @@ async def encode(filepath, editmsg, mes):
         [
             [InlineKeyboardButton("STATS", callback_data=f"stats{og}" )],
         ])
-     )
-    except Exception as e:
-     edit = await app.send_message(chat_id=editmsg, reply_to_message_id=mes, text="Encoding In Progress")   
+    ) 
     try:
         ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
         process = await run_subprocess(ffmpeg_cmd)
