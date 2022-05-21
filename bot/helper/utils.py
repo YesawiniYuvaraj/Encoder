@@ -1,5 +1,6 @@
 import os
 from bot import data, download_dir, app
+import time
 import asyncio
 from bot.helper.devtools import progress_for_pyrogram, humanbytes , TimeFormatter
 from pyrogram.types import Message
@@ -12,22 +13,32 @@ async def on_task_complete():
       await add_task(data[0])
 
 async def add_task(message: Message):
-    try:  
+    try: 
+      d_start = time.time() 
       msg = await message.reply_text("⬇️ **Downloading Video** ⬇️", quote=True)
-      filepath = await message.download(file_name=download_dir)
+      filepath = await bot.download_media(
+        message=message,  
+        file_name=download_dir,
+        progress=progress_for_pyrogram,
+        progress_args=(
+          app,
+          "**📥 Trying To Downloading 📥**",
+          msg,
+          d_start
+        )
+      )
+      msg.delete()
       chatid = message.chat.id
       reply_id = message.id
       og = await encode(filepath, chatid, reply_id)
       if og:
-        await msg.edit("**⬆️ Starting To Upload**")
+        mesa = await message.reply_text("**⬆️ Starting To Upload**")
         thumb = await get_thumbnail(og)
         width, height = await get_width_height(filepath)
         duration2 = await get_duration(og)
-        await msg.edit("**⬆️ Uploading Video ⬆️**")
+        await mesa.edit("**⬆️ Uploading Video ⬆️**")
         await app.send_video(video=og, chat_id=message.chat.id, supports_streaming=True, file_name=og, thumb=thumb, duration=duration2, width=width, height=height, caption=og, reply_to_message_id=reply_id)
         os.remove(thumb)
-        await msg.edit("**File Encoded**")
-        await msg.delete()
         os.remove(og)
       else:
         await msg.edit("**Error Contact @NIRUSAKIMARVALE**")
