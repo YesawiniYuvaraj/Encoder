@@ -77,14 +77,13 @@ async def encode(filepath, msg):
        ])
      )
     except Exception as e:
-     edit = await msg.edit(
-          text= "Encoding In Progress"
+     await msg.edit(
+        text= "Encoding In Progress"
       )
     try:
         ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
         process = await run_subprocess(ffmpeg_cmd)
         LOGGER.info(process)
-        await edit.delete()
         return og
     except Exception as er:
         return LOGGER.info(f"Error {er}")
