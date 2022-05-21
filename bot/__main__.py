@@ -117,7 +117,7 @@ async def help_message(app, message):
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
       return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")
-    await upload_mode(app, message)
+    await upload_handle(app, message)
     
     
 ##Run App
