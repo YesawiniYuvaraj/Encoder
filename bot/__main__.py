@@ -105,7 +105,14 @@ async def help_message(app, message):
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
       return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
-    await anime_mode(app, message)      
+    await anime_mode(app, message)  
+
+@app.on_message(filters.incoming & filters.command(["logs", "log"]))
+async def help_message(app, message):
+    if message.chat.id not in sudo_users:
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")
+    await send_document(chat_id=message.chat.id, reply_to_message_id=message.id, document="Encoder@Log.txt")
+    
     
     
 ##Run App
