@@ -35,6 +35,16 @@ async def anime_mode(app, message):
 async def get_ffmpeg(app, message):
   await message.reply_text(f"**The Set Code Is**\n```{ffmpeg[0]}```")
 
+async def upload_mode(app, message):
+  mode = message.text.split(" ", maxsplit=1)[1]
+ if mode == "document":
+   await message.reply_text("Change To Document Upload Mode")
+   filetype = False
+ elif mode == "video":
+   await message.reply_text("Set To Video Mode")
+   filetype = True
+ else:
+   await message.reply_text("Undefined Video Mode Ise ```document``` Or ```video```")
 
 async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, height, duration2):
    if filetype == True:
