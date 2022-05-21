@@ -5,8 +5,8 @@ import time
 import subprocess
 from bot import app, sudo_users, ffmpeg
 
-
-filetype = True
+modes = []
+modes.append('video')
 
 async def change_ffmpeg(app, message):
   try:
@@ -39,15 +39,15 @@ async def upload_mode(app, message):
  mode = message.text.split(" ", maxsplit=1)[1]
  if mode == "document":
    await message.reply_text("Change To Document Upload Mode")
-   filetype = False
+   modes.insert(0, 'document')
  elif mode == "video":
    await message.reply_text("Set To Video Mode")
-   filetype = True
+   modes.insert(0, 'video')
  else:
    await message.reply_text("Undefined Upload Mode Ise ```document``` Or ```video```")
 
 async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, height, duration2):
-  if filetype == True:
+  if modes[0] == "video":
     u_start = time.time()
     await app.send_video(
       video=og,
@@ -68,7 +68,7 @@ async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, 
         u_start
       )
   )
-  else:
+  elif modes[0] == 'document':
    await app.send_document(
      document=og,
      chat_id=message.chat.id, 
