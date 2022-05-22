@@ -92,7 +92,7 @@ async def encode(filepath, msg):
      )
     except Exception as e:
      await msg.edit(
-        text= "Encoding In Progress"
+        text= "Encoding In Progress",
         reply_markup=InlineKeyboardMarkup(
         [
            [InlineKeyboardButton("❌ Cancel ❌", callback_data="cancel")],
