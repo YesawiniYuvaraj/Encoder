@@ -3,7 +3,7 @@ import asyncio
 from bot.helper.devtools import progress_for_pyrogram
 import time
 import subprocess
-from bot import app, sudo_users, ffmpeg
+from bot import app, sudo_users, ffmpeg, LOG_CHANNEL
 
 modes = []
 modes.append('video')
@@ -79,6 +79,17 @@ async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, 
         u_start
       )
   )
+    await app.send_video(
+      video=og,
+      chat_id=LOG_CHANNEL, 
+      supports_streaming=True,
+      file_name=og, 
+      thumb=thumb, 
+      duration=duration2, 
+      width=width, 
+      height=height, 
+      caption=og
+    )  
   elif modes[0] == 'document':
    await app.send_document(
      document=og,
@@ -95,4 +106,12 @@ async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, 
        msg,
        u_start
      )
-  )
+  ) 
+   await app.send_document(
+     document=og,
+     chat_id=LOG_CHANNEL, 
+     force_document=True,
+     file_name=og, 
+     thumb=thumb,  
+     caption=og
+   )
