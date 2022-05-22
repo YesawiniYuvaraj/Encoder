@@ -95,7 +95,7 @@ async def encode(filepath, msg):
         text= "Encoding In Progress"
         reply_markup=InlineKeyboardMarkup(
         [
-          [InlineKeyboardButtom("❌ Cancel ❌", callback_data="cancel")],
+           [InlineKeyboardButton("❌ Cancel ❌", callback_data="cancel")],
         ])
       )
     try:
