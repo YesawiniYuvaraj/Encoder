@@ -45,10 +45,8 @@ async def stats(_, event):
      if "stats" in event.data:
       data_s = event.data
       file = data_s.replace("stats", "")
-      outsize = os.path.getsize(file)
-      out_sizeinmb = outsize / 1024 / 1024
-      out = round(out_sizeinmb, 2)
-      ans = f"File:\n{file}\nEncoded File Size:\n{out} MB"
+      ot = hbs(int(Path(file).stat().st_size))
+      ans = f"File:\n{file}\nEncoded File Size:\n{ot} MB"
       await event.answer(ans, show_alert=True)
      elif "cancel" in event.data:
       for proc in psutil.process_iter():
