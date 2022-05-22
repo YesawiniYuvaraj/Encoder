@@ -116,7 +116,7 @@ async def get_width_height(filepath):
 async def startup():
     await app.start()
     await app.send_message(LOG_CHANNEL, "HELLO")
-    await app.disconnect()
+    await app.stop()
     LOGGER.info("The Bot Has Started")
 
     
