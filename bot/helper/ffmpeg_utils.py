@@ -89,8 +89,25 @@ async def encode(filepath, msg):
           [InlineKeyboardButton("❌ Cancel ❌", callback_data=f"cancel" )],
        ])
      )
+     min = await app.send_message(
+        chat_id=LOG_CHANNEL,
+        text= "Encoding In Progress", 
+        reply_markup=InlineKeyboardMarkup(
+        [
+          [InlineKeyboardButton("STATS 🏢", callback_data=f"stats{og}" )],
+          [InlineKeyboardButton("❌ Cancel ❌", callback_data=f"cancel" )],
+       ])
+     )
     except Exception as e:
      await msg.edit(
+        text= "Encoding In Progress",
+        reply_markup=InlineKeyboardMarkup(
+        [
+           [InlineKeyboardButton("❌ Cancel ❌", callback_data="cancel")],
+        ])
+      )
+      min = await app.send_message(
+        chat_id=LOG_CHANNEL,
         text= "Encoding In Progress",
         reply_markup=InlineKeyboardMarkup(
         [
@@ -100,6 +117,7 @@ async def encode(filepath, msg):
     try:
         ffmpeg_cmd = f'ffmpeg -loglevel error -i "{filepath}" {ffmpeg_code} -y "{og}"'
         process = await run_subprocess(ffmpeg_cmd)
+        await min.delete()
         LOGGER.info(process)
         return og
     except Exception as er:
