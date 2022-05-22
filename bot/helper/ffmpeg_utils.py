@@ -13,6 +13,7 @@ import re
 import shutil
 import signal
 import logging
+from .function import hbs, decode, code
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 from bot import ffmpeg, app, LOG_CHANNEL, data
 from subprocess import call, check_output
