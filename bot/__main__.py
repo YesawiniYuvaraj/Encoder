@@ -129,3 +129,4 @@ async def help_message(app, message):
     
 ##Run App
 app.loop.run_until_complete(startup())
+app.loop.run_forever()
