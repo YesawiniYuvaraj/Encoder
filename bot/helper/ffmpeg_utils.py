@@ -50,7 +50,6 @@ async def stats(_, event):
       ans = f"File:\n{file}\nEncoded File Size:\n{out} MB"
       await event.answer(ans, show_alert=True)
      elif "cancel" in event.data:
-      del data[0]
       for proc in psutil.process_iter():
           processName = proc.name()
           processID = proc.pid
@@ -88,6 +87,7 @@ async def encode(filepath, msg):
         reply_markup=InlineKeyboardMarkup(
         [
           [InlineKeyboardButton("STATS", callback_data=f"stats{og}" )],
+          [InlineKeyboardButton("✖️ Cancel ❌", callback_data=f"cancel" )],
        ])
      )
     except Exception as e:
