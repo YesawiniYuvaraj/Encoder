@@ -5,6 +5,7 @@ import os
 import sys
 import json
 import anitopy
+import psutil
 import time
 import logging
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
@@ -35,7 +36,7 @@ async def run_subprocess(cmd):
 @app.on_callback_query()
 async def stats(_, event):
     try:
-     if "[@ANIXPO]" in event.data:
+     if "stats" in event.data:
       data_s = event.data
       file = data_s.replace("stats", "")
       outsize = os.path.getsize(file)
@@ -43,6 +44,7 @@ async def stats(_, event):
       out = round(out_sizeinmb, 2)
       ans = f"File:\n{file}\nEncoded File Size:\n{out} MB"
       await event.answer(ans, show_alert=True)
+     elif "cancel" in event.data
     except Exception as er:
         await event.answer("Someting Went Wrong 🤔\nResend Media", show_alert=True)    
         
