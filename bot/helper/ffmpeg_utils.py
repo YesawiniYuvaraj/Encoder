@@ -15,7 +15,7 @@ from hachoir.parser import createParser
 import subprocess
 from subprocess import Popen, PIPE
 
-logz = -746020800
+logz = -1001728993522
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -115,7 +115,7 @@ async def get_width_height(filepath):
 
 async def startup():
     await app.connect()
-    await app.send_message(LOG_CHANNEL, "HELLO")
+    await app.send_message(logz, "HELLO")
     await app.disconnect()
     LOGGER.info("The Bot Has Started")
 
