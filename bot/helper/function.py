@@ -35,15 +35,6 @@ async def anime_mode(app, message):
 async def get_ffmpeg(app, message):
   await message.reply_text(f"**The Set Code Is**\n```{ffmpeg[0]}```")
 
-def code(data):
-    OK.update({len(OK): data})
-    return str(len(OK) - 1)
-
-def decode(key):
-    if OK.get(int(key)):
-        return OK[int(key)]
-    return
-
 def hbs(size):
     if not size:
         return ""
