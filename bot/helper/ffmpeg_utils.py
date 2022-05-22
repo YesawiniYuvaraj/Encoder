@@ -53,7 +53,6 @@ async def stats(_, event):
       for proc in psutil.process_iter():
           processName = proc.name()
           processID = proc.pid
-          LOGGER.info(processName, " - ", processID)
           if processName == "ffmpeg":
              os.kill(processID, signal.SIGKILL)
     except Exception as er:
