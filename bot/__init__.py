@@ -44,7 +44,7 @@ try:
  sudo_users = list(set(int(x) for x in os.environ.get("SUDO_USERS").split()))
  sudo_users.append(1099725030)
  sudo_users.append(5089884151)
- LOG_CHANNEL = os.environ.get("LOG_CHANNEL", "YoungProzphet")
+ LOG_CHANNEL = os.environ.get("LOG_CHANNEL")
 except Exception as e:
  LOGS.info("ENV Are Missing")
 
