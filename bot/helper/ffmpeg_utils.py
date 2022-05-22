@@ -7,9 +7,14 @@ import json
 import anitopy
 import psutil
 import time
+import itertools
+import math
+import re
+import shutil
+import signal
 import logging
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
-from bot import ffmpeg, app, LOG_CHANNEL
+from bot import ffmpeg, app, LOG_CHANNEL, data
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -44,10 +49,16 @@ async def stats(_, event):
       out = round(out_sizeinmb, 2)
       ans = f"File:\n{file}\nEncoded File Size:\n{out} MB"
       await event.answer(ans, show_alert=True)
-     elif "cancel" in event.data
+     elif "cancel" in event.data:
+      del data[0]
+      for proc in psutil.process_iter():
+          processName = proc.name()
+          processID = proc.pid
+          LOGGER.info(processName, " - ", processID)
+          if processName == "ffmpeg":
+             os.kill(processID, signal.SIGKILL)
     except Exception as er:
-        await event.answer("Someting Went Wrong 🤔\nResend Media", show_alert=True)    
-        
+        await event.answer("Someting Went Wrong 🤔\nResend Media", show_alert=True)           
 
 async def encode(filepath, msg):
     basefilepath, extension = os.path.splitext(filepath)
