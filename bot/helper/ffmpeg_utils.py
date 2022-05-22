@@ -47,7 +47,7 @@ async def stats(_, event):
       data_s = event.data
       file = data_s.replace("stats", "")
       ot = hbs(int(Path(file).stat().st_size))
-      ans = f"File:\n{file}\nEncoded File Size:\n{ot} MB"
+      ans = f"File:\n{file}\nEncoded File Size:\n{ot}"
       await event.answer(ans, show_alert=True)
      elif "cancel" in event.data:
       for proc in psutil.process_iter():
@@ -99,7 +99,7 @@ async def encode(filepath, msg):
         ])
       )
     try:
-        ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
+        ffmpeg_cmd = f'ffmpeg -loglevel error -i "{filepath}" {ffmpeg_code} -y "{og}"'
         process = await run_subprocess(ffmpeg_cmd)
         LOGGER.info(process)
         return og
