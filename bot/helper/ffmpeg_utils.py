@@ -15,7 +15,7 @@ from hachoir.parser import createParser
 import subprocess
 from subprocess import Popen, PIPE
 
-logz = -1001728993522
+logz = 5121002601
 
 logging.basicConfig(
     level=logging.DEBUG,
