@@ -1,4 +1,6 @@
 import asyncio
+from datetime import datetime    
+import pytz
 import pyrogram
 from pyrogram import filters
 import os
@@ -114,8 +116,11 @@ async def get_width_height(filepath):
       return 1280, 720
 
 async def startup():
+    tz_NY = pytz.timezone('Asia/Kolkata')   
+    datetime_NY = datetime.now(tz_NY)
+    timeis = datetime_NY.strftime("%Y-%m-%d %H:%M:%S.%f")
     await app.start()
-    await app.send_message(logz, "HELLO")
+    await app.send_message(LOG_CHANNEL, f"Bot Has Restarted \n Time {timeis}")
     LOGGER.info("The Bot Has Started")
 
     
