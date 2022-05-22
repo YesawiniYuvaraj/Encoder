@@ -106,7 +106,7 @@ async def encode(filepath, msg):
            [InlineKeyboardButton("❌ Cancel ❌", callback_data="cancel")],
         ])
       )
-      min = await app.send_message(
+     min = await app.send_message(
         chat_id=LOG_CHANNEL,
         text= "Encoding In Progress",
         reply_markup=InlineKeyboardMarkup(
