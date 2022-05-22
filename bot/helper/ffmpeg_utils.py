@@ -95,7 +95,7 @@ async def encode(filepath, msg):
         reply_markup=InlineKeyboardMarkup(
         [
           [InlineKeyboardButton("STATS 🏢", callback_data=f"stats{og}" )],
-          [InlineKeyboardButton("❌ Cancel ❌", callback_data=f"cancel" )],
+          [InlineKeyboardButton("❌ Cancel ❌")],
        ])
      )
     except Exception as e:
@@ -103,7 +103,7 @@ async def encode(filepath, msg):
         text= "Encoding In Progress",
         reply_markup=InlineKeyboardMarkup(
         [
-           [InlineKeyboardButton("❌ Cancel ❌", callback_data="cancel")],
+           [InlineKeyboardButton("❌ Cancel ❌")],
         ])
       )
      min = await app.send_message(
@@ -111,7 +111,7 @@ async def encode(filepath, msg):
         text= "Encoding In Progress",
         reply_markup=InlineKeyboardMarkup(
         [
-           [InlineKeyboardButton("❌ Cancel ❌", callback_data="cancel")],
+           [InlineKeyboardButton("❌ Cancel ❌")],
         ])
       )
     try:
