@@ -117,6 +117,7 @@ async def startup():
     await app.start()
     await app.send_message(logz, "HELLO")
     LOGGER.info("The Bot Has Started")
+    await app.loop.run_forever()
 
     
 async def sample_gen(app, message):
