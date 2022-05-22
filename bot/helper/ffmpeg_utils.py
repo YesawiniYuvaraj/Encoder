@@ -35,7 +35,7 @@ async def run_subprocess(cmd):
 @app.on_callback_query()
 async def stats(_, event):
     try:
-     if "[@ANIXPO]" in event.data
+     if "[@ANIXPO]" in event.data:
       data_s = event.data
       file = data_s.replace("stats", "")
       outsize = os.path.getsize(file)
