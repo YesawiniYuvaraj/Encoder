@@ -1,6 +1,7 @@
 pyrogram
 aiohttp
 python-decouple
+pytz
 psutil
 TgCrypto
 motor
