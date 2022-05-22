@@ -86,13 +86,17 @@ async def encode(filepath, msg):
         text= "Encoding In Progress", 
         reply_markup=InlineKeyboardMarkup(
         [
-          [InlineKeyboardButton("STATS", callback_data=f"stats{og}" )],
-          [InlineKeyboardButton("✖️ Cancel ❌", callback_data=f"cancel" )],
+          [InlineKeyboardButton("STATS 🏢", callback_data=f"stats{og}" )],
+          [InlineKeyboardButton("❌ Cancel ❌", callback_data=f"cancel" )],
        ])
      )
     except Exception as e:
      await msg.edit(
         text= "Encoding In Progress"
+        reply_markup=InlineKeyboardMarkup(
+        [
+          [InlineKeyboardButtom("❌ Cancel ❌", callback_data="cancel")],
+        ])
       )
     try:
         ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpeg_code} -y "{og}"'
