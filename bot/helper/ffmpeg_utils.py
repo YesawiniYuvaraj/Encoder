@@ -35,13 +35,14 @@ async def run_subprocess(cmd):
 @app.on_callback_query()
 async def stats(_, event):
     try:
-     data_s = event.data
-     file = data_s.replace("stats", "")
-     outsize = os.path.getsize(file)
-     out_sizeinmb = outsize / 1024 / 1024
-     out = round(out_sizeinmb, 2)
-     ans = f"File:\n{file}\nEncoded File Size:\n{out} MB"
-     await event.answer(ans, show_alert=True)
+     if "[@ANIXPO]" in event.data
+      data_s = event.data
+      file = data_s.replace("stats", "")
+      outsize = os.path.getsize(file)
+      out_sizeinmb = outsize / 1024 / 1024
+      out = round(out_sizeinmb, 2)
+      ans = f"File:\n{file}\nEncoded File Size:\n{out} MB"
+      await event.answer(ans, show_alert=True)
     except Exception as er:
         await event.answer("Someting Went Wrong 🤔\nResend Media", show_alert=True)    
         
