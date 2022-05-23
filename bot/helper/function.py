@@ -143,7 +143,7 @@ async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, 
 async def mediainfo(app, message):
   if message.reply_to_message:
    video = message.reply_to_message.id
-   msg = await app.send_message(chat_id=message.id, reply_to_message_id=message.reply_to_message.id, text="<b>**Downloading The File</b>", parse_mode="html")
+   msg = await app.send_message(chat_id=message.id, reply_to_message_id=message.reply_to_message.id, text="**Downloading The File**")
    d_start = time.time()
    filepath = await app.download_media(
         message=message.reply_to_message,  
@@ -156,8 +156,9 @@ async def mediainfo(app, message):
           d_start
         )
       )
-   await msg.edit("<b> Getting Mediainfo </b>")
+   await msg.edit("**Getting Mediainfo**")
    mediainfo = await info(filepath, app)
-   await msg.edit(f"<a href='{mediainfo}'>Mediainfo</a>")
+   await msg.edit(f"[Mediainfo]({mediainfo}))
+")
   else:
    await app.send_message(message.chat.id, "**😐 Reply To A File Bruhh**")
