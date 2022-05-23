@@ -69,7 +69,7 @@ async def info(file, app):
     out = stdout.decode()
     abc = await app.get_me()
     name = abc.first_name
-    username = a.username
+    username = abc.username
     client = TelegraphPoster(use_api=True)
     client.create_api_token("Mediainfo")
     page = client.post(
