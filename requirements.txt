@@ -1,5 +1,6 @@
 pyrogram
 python-decouple
+html_telegraph_poster
 psutil
 TgCrypto
 motor
