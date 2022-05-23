@@ -159,6 +159,5 @@ async def mediainfo(app, message):
    await msg.edit("**Getting Mediainfo**")
    mediainfo = await info(filepath, app)
    await msg.edit(f"[Mediainfo]({mediainfo})")
-")
   else:
    await app.send_message(message.chat.id, "**😐 Reply To A File Bruhh**")
