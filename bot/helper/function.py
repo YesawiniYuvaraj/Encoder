@@ -1,11 +1,12 @@
 import pyrogram
+import time
 import asyncio
 from html_telegraph_poster import TelegraphPoster
 from bot.helper.devtools import progress_for_pyrogram
 import time
 import subprocess
 from subprocess import Popen
-from bot import app, sudo_users, ffmpeg, LOG_CHANNEL
+from bot import app, sudo_users, ffmpeg, LOG_CHANNEL, download_dir
 
 modes = []
 modes.append('video')
@@ -138,3 +139,23 @@ async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, 
      thumb=thumb,  
      caption=og
    )
+
+async def mediainfo(app, message):
+  if message.reply_to_message:
+   video = message.reply_to_message.id
+   msg = await app.send_message(chat_id=message.id, reply_to_message_id=reply_to_message.id, text="<b>**Downloading The File</b>, parse_mode="html")
+   d_start = time.time()
+   filepath = await app.download_media(
+        message=reply_to_message,  
+        file_name=download_dir,
+        progress=progress_for_pyrogram,
+        progress_args=(
+          app,
+          "**📥 Trying To Downloading 📥**",
+          msg,
+          d_start
+        )
+      )
+   await msg.edit("<b> Getting Mediainfo </b>")
+   mediainfo = await info(filepath, app)
+   await msg.edit(f"<a href='{a1}'>Mediainfo</a>/")
