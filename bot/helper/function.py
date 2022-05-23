@@ -1,8 +1,9 @@
 import pyrogram
 import asyncio
+from html_telegraph_poster import TelegraphPoster
 from bot.helper.devtools import progress_for_pyrogram
 import time
-import subprocess
+from subprocess import Popen
 from bot import app, sudo_users, ffmpeg, LOG_CHANNEL
 
 modes = []
@@ -56,6 +57,27 @@ async def upload_mode(app, message):
    modes.insert(0, 'video')
  else:
    await message.reply_text("Undefined Upload Mode Ise ```document``` Or ```video```")
+
+async def info(file, app):
+    process = subprocess.Popen(
+        ["mediainfo", file, "--Output=HTML"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    stdout, stderr = process.communicate()
+    out = stdout.decode()
+    abc = await app.get_me()
+    name = a.first_name
+    username = a.username
+    client = TelegraphPoster(use_api=True)
+    client.create_api_token("Mediainfo")
+    page = client.post(
+        title="Mediainfo",
+        author=name,
+        author_url=f"https://t.me/{username}",
+        text=out,
+    )
+    return page["url"]
 
 async def upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, height, duration2):
   if modes[0] == "video":
