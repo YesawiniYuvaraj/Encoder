@@ -158,4 +158,4 @@ async def mediainfo(app, message):
       )
    await msg.edit("<b> Getting Mediainfo </b>")
    mediainfo = await info(filepath, app)
-   await msg.edit(f"<a href='{a1}'>Mediainfo</a>/")
+   await msg.edit(f"<a href='{mediainfo}'>Mediainfo</a>")
