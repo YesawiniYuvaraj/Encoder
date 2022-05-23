@@ -79,8 +79,6 @@ async def encode(filepath, msg):
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@ANIXPO]" + ".mkv"
-    url = await info(filepath, app)
-    a = await app.send_message(LOG_CHANNEL, text=url)
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     try:
      await msg.edit(
