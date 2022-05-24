@@ -55,22 +55,22 @@ async def stats(_, event):
           processID = proc.pid
           if processName == "ffmpeg":
              os.kill(processID, signal.SIGKILL)
-      elif "HEVC" in event.data
+      elif "HEVC" in event.data:
        codec_code = str(ffmpeg[0])
        codec_code.replace("-c:v libx265", "-c:v libx264")
        await event.answer("Changed To AVC", show_alert=True)
        ffmpeg.insert(0, codec_code)
-     elif "AVC" in event.data
+     elif "AVC" in event.data:
        codec_code = str(ffmpeg[0])
        codec_code.replace("-c:v libx264", "-c:v libx265")
        await event.answer("Changed To HEVC", show_alert=True)
        ffmpeg.insert(0, codec_code)
-     elif "480p" in event.data
+     elif "480p" in event.data:
        res_code = str(ffmpeg[0])
        res_code.replace("-s 854x480", "-s 1280x720")
        await event.answer("Changed To 720p", show_alert=True)
        ffmpeg.insert(0, res_code)
-     elif "720p" in event.data
+     elif "720p" in event.data:
        res_code = str(ffmpeg[0])
        res_code.replace("-s 1280x720", "-s 854x480")
        await event.answer("Changed To 480p", show_alert=True)
