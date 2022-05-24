@@ -55,6 +55,26 @@ async def stats(_, event):
           processID = proc.pid
           if processName == "ffmpeg":
              os.kill(processID, signal.SIGKILL)
+      elif "HEVC" in event.data
+       codec_code = str(ffmpeg[0])
+       codec_code.replace("-c:v libx265", "-c:v libx264")
+       await event.answer("Changed To AVC", show_alert=True)
+       ffmpeg.insert(0, codec_code)
+     elif "AVC" in event.data
+       codec_code = str(ffmpeg[0])
+       codec_code.replace("-c:v libx264", "-c:v libx265")
+       await event.answer("Changed To HEVC", show_alert=True)
+       ffmpeg.insert(0, codec_code)
+     elif "480p" in event.data
+       res_code = str(ffmpeg[0])
+       res_code.replace("-s 854x480", "-s 1280x720")
+       await event.answer("Changed To 720p", show_alert=True)
+       ffmpeg.insert(0, res_code)
+     elif "720p" in event.data
+       res_code = str(ffmpeg[0])
+       res_code.replace("-s 1280x720", "-s 854x480")
+       await event.answer("Changed To 480p", show_alert=True)
+       ffmpeg.insert(0, res_code)   
     except Exception as er:
         await event.answer("Someting Went Wrong 🤔\nResend Media", show_alert=True)           
 
@@ -185,3 +205,22 @@ async def sample_gen(app, message):
   else:
      await dp.edit("Failed To Generate Sample Due To Locked Infrastructure")
      os.remove(video_file)    
+
+async def run(app, message):
+  tasty = str(ffmpeg[0])
+  if "-c:v libx265" in tasty:
+   video_codec = "HEVC"
+  else:
+   video_codec = "AVC"
+  if "-s 854x480" in tasty:
+   res = "480p"
+  elif "-s "1280x720" in tasty:
+   res = "720p"
+  await app.send_message(
+    chat_id=message.chat.id, 
+    text="**Settings -:**",
+    reply_markup=InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton(f"CODEC {video_codec}", callback_data=f"{video_codec}")],
+            [InlineKeyboardButton(f"RESOLUTION {res}", callback_data=f"{res}")]
+        ]))
