@@ -214,7 +214,7 @@ async def run(app, message):
    video_codec = "AVC"
   if "-s 854x480" in tasty:
    res = "480p"
-  elif "-s "1280x720" in tasty:
+  else:
    res = "720p"
   await app.send_message(
     chat_id=message.chat.id, 
