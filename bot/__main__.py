@@ -52,7 +52,7 @@ async def help_message(app, message):
 @app.on_message(filters.incoming & (filters.video | filters.document))
 async def encode_video(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")
+      return None
     if message.document:
       if not message.document.mime_type in video_mimetype:
         await message.reply_text("**Send Any Video File**", quote=True)
