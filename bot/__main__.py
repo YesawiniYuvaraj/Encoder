@@ -29,13 +29,13 @@ video_mimetype = [
 @app.on_message(filters.incoming & filters.command(["cmds", "cmd", "commands"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")
     await message.reply_text(f"Hi {message.from_user.mention()}\n**•The List Of Commands Are As Follows -:**\n•```/start```**- To Start The Bot\n**•```/cmds```**-To Repeat This List**\n•**Maintained By @FIERCE_TOONS**")
 
 @app.on_message(filters.incoming & filters.command(["start", "help"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")
     REXT = f"Hi {message.from_user.mention()}\n**•I can Encode Telegram files And Send Sample (Especially Movies,Animes), just send me a video.**\n**•This Bot is Developed by @NIRUSAKI_AYEDAEMON**\n**•Simple, Easy and Convenient to use**\n**Thanks**"
     await app.send_message(
         chat_id=message.chat.id,
@@ -43,7 +43,7 @@ async def help_message(app, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Join Anixpo', url='https://t.me/AniXpo')
+                    InlineKeyboardButton('My Master', url='Hc_Cartoons')
                 ]
             ]
         ),
@@ -67,75 +67,75 @@ async def encode_video(app, message):
 @app.on_message(filters.incoming & filters.command(["execute", "exec", "bash"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")    
     await exec_message_f(app, message)
     
 @app.on_message(filters.incoming & filters.command(["eval", "py", "evaluate"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")    
     await eval_message_f(app, message)    
     
 @app.on_message(filters.incoming & filters.command(["sample", "cut", "simp"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")    
     await sample_gen(app, message)
     
 @app.on_message(filters.incoming & filters.command(["ffmpeg", "setc", "setcode"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")    
     await change_ffmpeg(app, message)
     
     
 @app.on_message(filters.incoming & filters.command(["getcode"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")    
     await get_ffmpeg(app, message)
 
 @app.on_message(filters.incoming & filters.command(["Movie"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")    
     await movie_mode(app, message)  
 
 @app.on_message(filters.incoming & filters.command(["Anime"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")    
     await anime_mode(app, message)  
 
 @app.on_message(filters.incoming & filters.command(["logs", "log"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")
     await app.send_document(chat_id=message.chat.id, reply_to_message_id=message.id, force_document=True, document="Encoder@Log.txt")
     
 @app.on_message(filters.incoming & filters.command(["ulmode"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")
     await upload_mode(app, message)
 
 @app.on_message(filters.incoming & filters.command(["clear"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")
     await message.reply_text("**Successfully Cleared The Queue**")
     data.clear()
 
 @app.on_message(filters.incoming & filters.command(["mediainfo", "info"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")
     await mediainfo(app, message)
 
 @app.on_message(filters.incoming & filters.command(["settings"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
-      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Hc_Cartoons**")
     await run(app, message)    
     
 ##Run App
