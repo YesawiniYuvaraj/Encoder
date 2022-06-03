@@ -32,7 +32,7 @@ LOGS = logging.getLogger(__name__)
 THUMB = "https://te.legra.ph/file/2ebf402cdef8c27ab4648.jpg"
 os.system(f"wget {THUMB} -O thumb.jpg")
 ffmpeg = []
-ffmpeg.append("-map 0 -c:v libx265 -vf 'drawtext=fontfile=font.ttf:fontsize=29:fontcolor=white:bordercolor=black@0.50:x=w-tw-10:y=10:box=1:boxcolor=black@0.5:boxborderw=6:text=HC CARTOONS' -crf 24 -c:s copy  -s 1280x720 -preset ultrafast -c:a libopus -ab 60k -vbr 2 -ac 2 -level 2.1")
+ffmpeg.append("-map 0 -c:v libx265 -vf 'drawtext=fontfile=font.ttf:fontsize=29:fontcolor=white:bordercolor=black@0.50:x=w-tw-10:y=10:box=1:boxcolor=black@0.5:boxborderw=6:text=HC CARTOONS' -crf 24 -c:s copy  -s 1280x720 -preset veryfast -c:a libopus -ab 60k -vbr 2 -ac 2 -level 2.1")
 try:
  api_id = int(os.environ.get("API_ID"))
  api_hash = os.environ.get("API_HASH")
