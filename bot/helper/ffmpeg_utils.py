@@ -76,7 +76,7 @@ async def stats(_, event):
       await event.answer("Changed To 480p", show_alert=True)
       ffmpeg.insert(0, res_code)   
     except Exception as er:
-        await event.answer("Someting Went Wrong 🤔\nResend Media", show_alert=True)           
+        await event.answer("Someting Went Wrong 🤔\nResend Media Mwa", show_alert=True)           
 
 async def encode(filepath, msg):
     basefilepath, extension = os.path.splitext(filepath)
@@ -98,7 +98,7 @@ async def encode(filepath, msg):
     if "episode_number" in new_name.keys():
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
-    og = joined_string + " [@ANIXPO]" + ".mkv"
+    og = joined_string + " [PREM]" + ".mkv"
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     try:
      await msg.edit(
