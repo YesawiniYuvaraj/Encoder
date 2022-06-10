@@ -20,8 +20,11 @@ jobs:
       - name: Install requirements
         run: pip install --upgrade -r requirements.txt 
 
-      - name: install ffmpeg
-        run: sudo apt install ffmpeg
+      - name: update
+        run: sudo apt-get -y update
+      
+        - name: install ffmpeg
+        run: sudo apt install -y ffmpeg
 
       - name: erro404
         timeout-minutes: 350
