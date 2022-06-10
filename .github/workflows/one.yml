@@ -23,7 +23,7 @@ jobs:
       - name: update
         run: sudo apt-get -y update
       
-        - name: install ffmpeg
+      - name: install ffmpeg
         run: sudo apt install -y ffmpeg
 
       - name: erro404
