@@ -23,7 +23,7 @@ async def add_task(message: Message):
         progress=progress_for_pyrogram,
         progress_args=(
           app,
-          "**📥 Trying To Downloading 📥**",
+          "**🎲  Trying To Downloading 🎲 **",
           msg,
           d_start
         )
@@ -32,18 +32,18 @@ async def add_task(message: Message):
       reply_id = message.id
       og = await encode(filepath, msg)
       if og:
-        await msg.edit("**⬆️ Starting To Upload**")
+        await msg.edit("** 🚀Starting To Upload**")
         thumb = await get_thumbnail(og)
         width, height = await get_width_height(filepath)
         duration2 = await get_duration(og)
-        await msg.edit("**⬆️ Uploading Video ⬆️**")
+        await msg.edit("**🚀 Uploading Video 🚀**")
         u_start = time.time()
         await upload_handle(app, message, og, thumb, reply_id, msg, u_start, width, height, duration2)
         await msg.delete()
         os.remove(thumb)
         os.remove(og)
       else:
-        await msg.edit("**Error Contact @NIRUSAKIMARVALE**")
+        await msg.edit("**Error Contact @Hc_Cartoons**")
         os.remove(og)
     except MessageNotModified:
       pass
