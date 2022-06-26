@@ -16,7 +16,7 @@ async def on_task_complete():
 async def add_task(message: Message):
     try: 
       d_start = time.time() 
-      msg = await message.reply_text("⬇️ **Downloading Video** ⬇️", quote=True)
+      msg = await message.reply_text(" 🎧**Downloading Video** 🎧", quote=True)
       filepath = await app.download_media(
         message=message,  
         file_name=download_dir,
