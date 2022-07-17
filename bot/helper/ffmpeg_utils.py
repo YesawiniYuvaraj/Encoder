@@ -98,7 +98,7 @@ async def encode(filepath, msg):
     if "episode_number" in new_name.keys():
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
-    og = joined_string + " [PREM]" + ".mkv"
+    og = joined_string + " [ HC CARTOONS ]" + ".mkv"
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     try:
      await msg.edit(
